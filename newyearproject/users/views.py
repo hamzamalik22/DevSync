@@ -47,9 +47,11 @@ def RegisterUser(request):
             return redirect('login-User')
         else:
             messages.error(request, 'an error occured during registration')
+            
     context = {'page' : 'Register','form' : form}
     return render(request,'login_register.html', context)
 
 def logoutUser(request):
     logout(request)
+    messages.info(request, 'User was logged out!')
     return redirect('profiles')

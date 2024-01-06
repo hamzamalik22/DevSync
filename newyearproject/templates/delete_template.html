@@ -2,15 +2,24 @@
 
 
 {% block content %}
-<p>Are sure you wanna delete "{{project}}"</p>
 
-<form method="POST">
-    {% csrf_token %}
 
-    <a href="{% url 'homepage' %}">Go back</a>
-    <input type="submit" value="Confirm" />
-
-</form>
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
+            <br>
+            <p>Are sure you wanna delete "{{project}}"</p>
+            <form method="POST">
+                {% csrf_token %}
+            
+                <a class="btn btn--sub btn--lg my-md" href="{% url 'user-account' %}">Go back</a>
+                <input class="btn btn--sub btn--lg my-md" type="submit" value="Confirm" />
+            
+            </form>
+        </div>
+    </div>
+</main>
 
 
 

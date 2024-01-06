@@ -15,10 +15,11 @@
           <li class="header__menuItem"><a href="{% url 'profiles' %}">Developers</a></li>
           <li class="header__menuItem"><a href="{% url 'project' %}">Projects</a></li>
           <li class="header__menuItem"><a href="">Inbox</a></li>
-          {% comment %} <li class="header__menuItem"><a href="">My Account</a></li> {% endcomment %}
+          
 
           {% if request.user.is_authenticated %}
-          <li class="header__menuItem"><a href="{% url 'create-project' %}">Add Project</a></li>
+          {% comment %} <li class="header__menuItem"><a href="{% url 'create-project' %}">Add Project</a></li> {% endcomment %}
+          <li class="header__menuItem"><a href="user-account">My Account</a></li>
           <li class="header__menuItem"><a href="{% url 'logout-User' %}" class="btn btn--sub">Logout</a></li>
           {% else %}
           <li class="header__menuItem"><a href="{% url 'login-User' %}" class="btn btn--sub">Login/Sign Up</a></li>

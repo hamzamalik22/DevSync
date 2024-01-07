@@ -2,11 +2,26 @@ from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+
 
 
 def homepage(request):
-    projects = Project.objects.all()
-    context = {'page' : 'Dev Sync','projects' : projects}
+    q = ''
+
+    if request.GET.get('q'):
+        q = request.GET.get('q')
+
+    tags = Tag.objects.filter(name__icontains = q)
+
+    projects = Project.objects.distinct().filter(
+        Q(title__icontains=q) | 
+        Q(description__icontains=q) | 
+        Q(owner__name__icontains=q) |
+        Q(tags__in=tags) 
+        
+    )
+    context = {'page' : 'Projects','projects' : projects, 'q' : q}
     return render(request,'homepage.html',context)
 
 def projectpage(request,pk):

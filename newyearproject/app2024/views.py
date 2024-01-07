@@ -3,12 +3,11 @@ from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-
-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def homepage(request):
+    # <---- Searching ---->
     q = ''
-
     if request.GET.get('q'):
         q = request.GET.get('q')
 
@@ -19,9 +18,24 @@ def homepage(request):
         Q(description__icontains=q) | 
         Q(owner__name__icontains=q) |
         Q(tags__in=tags) 
-        
     )
-    context = {'page' : 'Projects','projects' : projects, 'q' : q}
+
+        # <---- Pagination ---->
+    page = request.GET.get('page')
+    results = 3
+    paginator = Paginator(projects, results)
+
+    try:
+        projects = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        projects = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        projects = paginator.page(page)
+
+
+    context = {'page' : 'Projects','projects' : projects, 'q' : q, 'paginator' : paginator}
     return render(request,'homepage.html',context)
 
 def projectpage(request,pk):
@@ -40,7 +54,7 @@ def createProject(request):
             project =  form.save(commit=False)
             project.owner = profile
             project.save()
-            return redirect('project')
+            return redirect('user-account')
 
     context = {'page' : 'Create Project','form' : form}
     return render(request,'app2024/project_form.html',context)  

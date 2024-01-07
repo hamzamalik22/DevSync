@@ -5,9 +5,11 @@ from django.contrib import messages
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def profile(request):
+    # <---- Searching ---->
     q = ''
 
     if request.GET.get('q'):
@@ -21,7 +23,23 @@ def profile(request):
         Q(skills__in=skills)  
     )
 
-    context = {'page' : 'Developers','profiles' : profiles, 'q' : q}
+ # <---- Pagination ---->
+    page = request.GET.get('page')
+    results = 6
+    paginator = Paginator(profiles, results)
+
+    try:
+        profiles = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        profiles = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        profiles = paginator.page(page)
+
+
+
+    context = {'page' : 'Developers','profiles' : profiles, 'q' : q, 'paginator' : paginator}
     return render(request, 'profiles.html', context)
 
 def userProfile(request, pk):

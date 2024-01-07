@@ -4,10 +4,24 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+
 
 def profile(request):
-    profiles = Profile.objects.all()
-    context = {'page' : 'Developers','profiles' : profiles}
+    q = ''
+
+    if request.GET.get('q'):
+        q = request.GET.get('q')
+
+    skills = Skills.objects.filter(name__icontains=q)
+
+    profiles = Profile.objects.distinct().filter(
+        Q(name__icontains=q) | 
+        Q(headline__icontains=q) | 
+        Q(skills__in=skills)  
+    )
+
+    context = {'page' : 'Developers','profiles' : profiles, 'q' : q}
     return render(request, 'profiles.html', context)
 
 def userProfile(request, pk):

@@ -4,6 +4,8 @@ from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib import messages
+
 
 def homepage(request):
     # <---- Searching ---->
@@ -49,6 +51,13 @@ def projectpage(request,pk):
             review.project = project
             review.owner = request.user.profile
             review.save()
+
+            project.getVoteCount
+
+
+
+            messages.success(request, 'Commented Succesfuly')
+            return redirect('projectpage', pk = project.id)
 
 
     context = {'page' : project.title,'project' : project,'form' : form}

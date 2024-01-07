@@ -117,7 +117,7 @@ def deleteSkill(request, pk):
 
 def loginUser(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        username = request.POST['username'].lower()
         password = request.POST['password1']
 
         try:

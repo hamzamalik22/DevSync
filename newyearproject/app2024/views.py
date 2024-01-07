@@ -40,7 +40,18 @@ def homepage(request):
 
 def projectpage(request,pk):
     project = Project.objects.get(id = pk)
-    context = {'page' : project.title,'project' : project}
+    form = ReviewForm()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.project = project
+            review.owner = request.user.profile
+            review.save()
+
+
+    context = {'page' : project.title,'project' : project,'form' : form}
     return render(request,'app2024/project.html',context)
 
 @login_required(login_url="login-User")

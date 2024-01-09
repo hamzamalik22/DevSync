@@ -20,7 +20,7 @@ DEV SYNC is a Django full-stack web application that enables developers to showc
 
 ## Prerequisites
 
-- Python 3.x installed
+- Python 3+ installed
 - Pip package manager
 - PostgreSQL installed (for production deployment)
 

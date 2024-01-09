@@ -15,17 +15,17 @@ def createProfile(sender, instance, created, **kwargs):
             name = user.first_name,
         )
 
-#         subject = 'Welcome to DEVSYNC'
-#         welcome = 'Thanks for Joining Devsync....'
+        subject = 'Welcome to DEVSYNC'
+        welcome = 'Thanks for Joining Devsync....'
 
 
-#         send_mail(
-#                     subject,
-#                     welcome,
-#                     settings.EMAIL_HOST_USER,
-#                     [profile.email],
-#                     fail_silently=False,
-# )
+        send_mail(
+                    subject,
+                    welcome,
+                    settings.EMAIL_HOST_USER,
+                    [profile.email],
+                    fail_silently=False,
+        )
 
 
 post_save.connect(createProfile, sender = User)

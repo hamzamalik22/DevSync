@@ -2,6 +2,15 @@
 
 DEV SYNC is a Django full-stack web application that enables developers to showcase their profiles and projects, acting as a portfolio. Users can create accounts, add their projects, and receive messages from viewers interested in their work.
 
+# Project Overview
+* Basic Djagno Overview
+* Database Design and Models
+* Static Files
+* User Registration & Authenticaiton
+* Search
+* Pagination
+* Building an API with Django REST Framework (DRF)
+
 ## Features
 
 - **User Authentication:** Developers can create accounts, log in, and manage their profiles.

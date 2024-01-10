@@ -35,8 +35,30 @@ DEV SYNC is a Django full-stack web application that enables developers to showc
 
 
 # Preview
+    
+# HomePage
 
+![Alt text](projectImages/HomePage.png)
 
+# Projects Page
+
+![Alt text](projectImages/ProjectsPage.png)
+
+# Account Page
+
+![Alt text](projectImages/Account.png)
+
+# User Inbox
+
+![Alt text](projectImages/inbox.png)
+
+# User Profile
+
+![Alt text](projectImages/userProfile.png)
+
+# Forms
+
+![Alt text](projectImages/Forms.png)
 
 ## Installation
 

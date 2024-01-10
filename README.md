@@ -33,6 +33,11 @@ DEV SYNC is a Django full-stack web application that enables developers to showc
 - Pip package manager
 - PostgreSQL installed (for production deployment)
 
+
+# Preview
+
+
+
 ## Installation
 
 1. Clone the repository:

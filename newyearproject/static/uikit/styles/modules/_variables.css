@@ -1,8 +1,8 @@
 :root {
-  --color-main: #5aa5b9;
-  --color-main-light: #e6faff;
+  --color-main: #e017b8;
+  --color-main-light: #acc8cf;
   --color-sub: #3f4156;
-  --color-sub-light: #51546e;
+  --color-sub-light: #171824;
   --color-sub-lighter: #ededfd;
   --color-text: #737373;
   --color-gray: #8b8b8b;
@@ -11,7 +11,7 @@
   --color-bg: #f8fafd;
   --color-white: #fffefd;
   --color-white-light: #f3f3f3;
-  --color-success: #359e64;
+  --color-success: #19b660;
   --color-success-bg: #def8e8;
   --color-error: #fc4b0b;
   --color-error-bg: #fff2ee;

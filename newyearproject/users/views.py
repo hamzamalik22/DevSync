@@ -22,7 +22,6 @@ def profile(request):
         Q(headline__icontains=q) | 
         Q(skills__in=skills)  
     )
-
  # <---- Pagination ---->
     page = request.GET.get('page')
     results = 6
@@ -38,21 +37,20 @@ def profile(request):
         profiles = paginator.page(page)
 
 
-
-    context = {'page' : 'Developers','profiles' : profiles, 'q' : q, 'paginator' : paginator}
+    context = {'page' : 'DevSync','profiles' : profiles, 'q' : q, 'paginator' : paginator}
     return render(request, 'profiles.html', context)
 
 def userProfile(request, pk):
     profile = Profile.objects.get(id = pk)
     topSkills = profile.skills_set.exclude(description__exact="")
     otherSkills = profile.skills_set.filter(description="")
-    context = {'page' : 'Profile', 'profile': profile,'topSkills': topSkills,'otherSkills': otherSkills}
+    context = {'page' : f'{profile.name}', 'profile': profile,'topSkills': topSkills,'otherSkills': otherSkills}
     return render(request, 'user_profile.html', context)
 
 @login_required(login_url="login-User")
 def userAccount(request):
     profile = request.user.profile
-    context = {'page' : 'Profile', 'profile': profile}
+    context = {'page' : f'{profile.name}', 'profile': profile}
     return render(request, 'user_account.html',context)
 
 @login_required(login_url="login-User")
@@ -66,7 +64,7 @@ def editAccount(request):
             form.save()
             return redirect('user-account')
 
-    context = {'page' : 'Edit', 'form': form}
+    context = {'page' : 'Edit Profile', 'form': form}
     return render(request, 'profile_form.html',context)
 
 @login_required(login_url="login-User")
@@ -83,7 +81,7 @@ def addSkill(request):
             messages.info(request, 'Skill is added Successfully')
             return redirect('user-account')
 
-    context = {'form' : form}
+    context = {'page' : 'Add Skill','form' : form}
     return render(request, 'skill_form.html',context)
 
 
@@ -167,7 +165,7 @@ def inbox(request):
     profile = request.user.profile
     messageRequests =  profile.messages.all()
     unreadCount = messageRequests.filter(is_read = False).count() 
-    context = {'messageRequests' : messageRequests, 'unreadCount' : unreadCount}
+    context = {'page' : 'Inbox','messageRequests' : messageRequests, 'unreadCount' : unreadCount}
     return render(request, 'inbox.html',context)
 
 
@@ -179,7 +177,7 @@ def theMessage(request,pk):
         messageRequests.is_read = True
         messageRequests.save()
 
-    context = {'messageRequests' : messageRequests}
+    context = {'page' : 'Message','messageRequests' : messageRequests}
     return render(request, 'message.html', context)
 
 def createMessage(request, pk):
@@ -207,5 +205,5 @@ def createMessage(request, pk):
             messages.success(request, 'Message sent...')
             return redirect('user-profile', pk = recipient.id)
 
-    context = {'form': form, 'recipient' : recipient}
+    context = {'page' : 'Communicate with Dev','form': form, 'recipient' : recipient}
     return render(request, 'message_form.html',context)

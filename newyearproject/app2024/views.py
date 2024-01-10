@@ -23,6 +23,7 @@ def homepage(request):
     )
 
         # <---- Pagination ---->
+    
     page = request.GET.get('page')
     results = 3
     paginator = Paginator(projects, results)
@@ -103,5 +104,5 @@ def deleteProject(request, pk):
         project.delete()
         return redirect('project')
 
-    context = {'page' : 'Create Project','project' : project}
+    context = {'page' : 'Delete Project','project' : project}
     return render(request,'delete_template.html',context)

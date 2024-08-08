@@ -1,25 +1,25 @@
 :root {
-  --color-main: #e017b8;
-  --color-main-light: #acc8cf;
-  --color-sub: #3f4156;
-  --color-sub-light: #171824;
-  --color-sub-lighter: #ededfd;
-  --color-text: #737373;
-  --color-gray: #8b8b8b;
-  --color-light: #e5e7eb;
-  --color-light-gray: #767676;
-  --color-bg: #f8fafd;
-  --color-white: #fffefd;
-  --color-white-light: #f3f3f3;
-  --color-success: #19b660;
-  --color-success-bg: #def8e8;
-  --color-error: #fc4b0b;
-  --color-error-bg: #fff2ee;
-  --font-base: 'Poppins', arial, helvetica, 'Segoe UI', roboto, ubuntu, sans-serif;
-  --font-monospace: 'Fira Code', 'Courier New', courier, monospace;
-  --font-regular: 300;
+  --color-main: #0088ff; /* Vivid Blue */
+  --color-main-light: #3a9bdc; /* Light Blue */
+  --color-sub: #121212; /* Very Dark Gray */
+  --color-sub-light: #1e1e1e; /* Darker Gray */ 
+  --color-sub-lighter: #333333; /* Dark Gray */
+  --color-text: #e0e0e0; /* Light Gray Text */
+  --color-gray: #757575; /* Medium Gray */
+  --color-light: #ffffff; /* Dark Charcoal */
+  --color-light-gray: #616161; /* Medium Charcoal Gray */
+  --color-bg: #0e0c0c; /* Dark Background */
+  --color-white: #ffffff; /* Pure White */
+  --color-white-light: #bfbfbf; /* Light Off-White */
+  --color-success: #4caf50; /* Success Green */
+  --color-success-bg: #2e7d32; /* Darker Green */
+  --color-error: #f44336; /* Error Red */
+  --color-error-bg: #d32f2f; /* Darker Red */
+  --font-base: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-monospace: 'Fira Code', 'Courier New', Courier, monospace;
+  --font-regular: 400;
   --font-medium: 500;
   --font-bold: 700;
-  --generic-shadow: 1px 1px 5px #00000010;
+  --generic-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   --generic-transition: all 0.3s ease-in-out;
 }

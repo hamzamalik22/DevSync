@@ -7,10 +7,10 @@
  <main class="formPage my-xl">
     <div class="content-box">
         <div class="formWrapper">
-            <a class="backButton" href="{% url 'user-account' %}"><i class="im im-angle-left"></i></a>
+            <a class="backButton" href="{% url 'user-account' %}"><i class="ri-arrow-left-s-line"></i></a>
             <br>
 
-            <form class="form" method="POST" action="{% url 'edit-account' %}">
+            <form class="form" method="POST" action="{% url 'edit-account' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <!-- Input:Text -->
                 {% for field in form %}

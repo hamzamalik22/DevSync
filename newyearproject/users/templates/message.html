@@ -6,9 +6,9 @@
   <main class="messagePage my-xl">
     <div class="content-box">
       <div class="message">
-        <a class="backButton" href="{% url 'inbox' %}"><i class="im im-angle-left"></i></a>
+        <a class="backButton" href="{% url 'inbox' %}"><i class="ri-arrow-left-s-line"></i></a>
         <h2 class="message__subject">{{ messageRequests.subject }}</h4>
-          <a href="profile.html" class="message__author">{{ messageRequests.name }}</a>
+          <a href="#" class="message__author">{{ messageRequests.name }}</a>
           <p class="message__date">{{ messageRequests.created }}</p>
           <div class="message__body">
             {{ messageRequests.body|linebreaksbr }}

@@ -2,11 +2,12 @@
 
 {% block content %}
 
-<main class="projects">
+<main class="home">
     <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
-          <h2>Search for <span>Projects</span></h2>
+          <h2>Explore the <span>Projects</span></h2>
+          <h2> by Awesome developers</h2>
         </div>
 
         <div class="hero-section__search">
@@ -38,7 +39,7 @@
                   <p><a class="project__author" href="{% url 'user-profile' project.owner.id %}">By {{project.owner}}</a></p>
                   <p class="project--rating">
                     <span style="font-weight: bold;">{{project.vote_ratio}}%</span> Postitive
-                    Feedback ({{project.vote_total}}) Vote{{project.vote_total|pluralize:"s"}}
+                    Feedback<br>({{project.vote_total}}) Total Vote{{project.vote_total|pluralize:"s"}}
                   </p>
                   <div class="project__tags">
                     {% for tag in project.tags.all %}

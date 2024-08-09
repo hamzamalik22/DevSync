@@ -42,7 +42,8 @@ img {
 }
 
 .header__logo>img {
-  height: 3.8rem;
+  height: 7rem;
+  margin-top: 4px;
 }
 
 .header__nav>ul {

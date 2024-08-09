@@ -3,7 +3,8 @@
 <header class="header">
     <div class="container container--narrow">
       <a href="{% url 'profiles' %}" class="header__logo">
-        <h2>𐌃𐌄ᕓ𐌔𐌙𐌍𐌂</h3>
+        {% comment %} <h2>𐌃𐌄ᕓ𐌔𐌙𐌍𐌂</h3> {% endcomment %}
+        <img src="{% static "images/devsync3.png" %}" alt="">
       </a>
       <nav class="header__nav">
         <input type="checkbox" id="responsive-menu" />

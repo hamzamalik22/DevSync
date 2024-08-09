@@ -29,11 +29,6 @@
                 ></a>
               </li>
               <li>
-                <a title="Stackoverflow" href="#" target="_blank"
-                  ><i class="ri-stack-overflow-fill"></i
-                ></a>
-              </li>
-              <li>
                 <a
                   title="Twitter"
                   href="{{ profile.social_twitter }}"
@@ -101,30 +96,40 @@
           {% endfor %}
         </table>
 
-                <!-- Add Other Skills Section -->
-                <div class="settings">
-                  <h3 class="settings__title">Other Skills</h3>
-                  <a style="color: white" class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'add-other-skill' %}"><i
-                      class="im im-plus"></i> Add Other Skill</a>
-                </div>
-        
-                <table class="settings__table">
-                  {% for other_skill in profile.otherskill_set.all %}
-                  <tr>
-                    <td class="settings__tableInfo">
-                      <h4 style="color: white">{{ other_skill.skill_name }}</h4>
-                    </td>
-                    <td class="settings__tableActions">
-                      <a style="color: white" class="tag tag--pill tag--main settings__btn"
-                        href="{% url 'edit-other-skill' other_skill.id %}"><i class="im im-edit"></i> Edit</a>
-                      <a style="color: white" class="tag tag--pill tag--main settings__btn"
-                        href="{% url 'delete-other-skill' other_skill.id %}"><i class="im im-x-mark-circle-o"></i> Delete</a>
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </table>
+        <!-- Add Other Skills Section -->
+        <div class="settings">
+          <h3 class="settings__title">Other Skills</h3>
+          <a
+            style="color: white"
+            class="tag tag--pill tag--sub settings__btn tag--lg"
+            href="{% url 'add-other-skill' %}"
+            ><i class="im im-plus"></i> Add Other Skill</a
+          >
+        </div>
 
-
+        <table class="settings__table">
+          {% for other_skill in profile.otherskill_set.all %}
+          <tr>
+            <td class="settings__tableInfo">
+              <h4 style="color: white">{{ other_skill.skill_name }}</h4>
+            </td>
+            <td class="settings__tableActions">
+              <a
+                style="color: white"
+                class="tag tag--pill tag--main settings__btn"
+                href="{% url 'edit-other-skill' other_skill.id %}"
+                ><i class="im im-edit"></i> Edit</a
+              >
+              <a
+                style="color: white"
+                class="tag tag--pill tag--main settings__btn"
+                href="{% url 'delete-other-skill' other_skill.id %}"
+                ><i class="im im-x-mark-circle-o"></i> Delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
 
         <div class="settings">
           <h3 class="settings__title">Projects</h3>

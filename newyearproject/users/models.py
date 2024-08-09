@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 
+from cloudinary.models import CloudinaryField
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -11,13 +13,14 @@ class Profile(models.Model):
     headline = models.CharField(max_length=200, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
-    profile_image = models.ImageField(
-        max_length=200,
-        null=True,
-        blank=True,
-        upload_to="profiles/",
-        default="default_profile.png",
-    )
+    # profile_image = models.ImageField(
+    #     max_length=200,
+    #     null=True,
+    #     blank=True,
+    #     upload_to="profiles/",
+    #     default="default_profile.png",
+    # )
+    profile_image = CloudinaryField("image", default="https://res.cloudinary.com/dm8tng2j0/image/upload/v1723218301/lltf6bhysrpkaslzw6dt.jpg")
     social_github = models.CharField(max_length=200, null=True, blank=True)
     social_twitter = models.CharField(max_length=200, null=True, blank=True)
     social_linkedin = models.CharField(max_length=200, null=True, blank=True)

@@ -12,8 +12,15 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+from dotenv import load_dotenv
 
-# import data
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,12 +49,23 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "app2024.apps.App2024Config",
     "users.apps.UsersConfig",
-    "rest_framework",
 ]
+
+EXTERNAL_APPS = [
+    "whitenoise.runserver_nostatic",
+    "rest_framework",
+    "rest_framework_simplejwt",
+    "corsheaders",
+    "cloudinary",
+]
+
+INSTALLED_APPS += EXTERNAL_APPS
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -80,11 +98,18 @@ WSGI_APPLICATION = "newyearproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        default=str(os.getenv("DATABASE_URL")), conn_max_age=1800
+    ),
 }
 
 
@@ -124,9 +149,9 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
 STATICFILES_DIRS = [BASE_DIR / "static"]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 
@@ -146,3 +171,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "apkunitedwewin@gmail.com"
 EMAIL_HOST_PASSWORD = "mfaaaamltmbdyjpy"
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+cloudinary.config(
+    cloud_name=str(os.getenv("CLOUDINARY_CLOUD_NAME")),
+    api_key=str(os.getenv("CLOUDINARY_API_KEY")),
+    api_secret=str(os.getenv("CLOUDINARY_API_SECRET")),
+)

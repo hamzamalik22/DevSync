@@ -13,43 +13,43 @@
             <p class="dev__title">{{ profile.headline }}</p>
             <p class="dev__location">Based in {{ profile.location }}</p>
             <ul class="dev__social">
+              {% if profile.social_github %}
               <li>
                 <a
                   title="Github"
                   href="{{ profile.social_github }}"
                   target="_blank"
-                  ><i class="im im-github"></i
+                  ><i class="ri-github-fill"></i
                 ></a>
               </li>
-              <li>
-                <a title="Stackoverflow" href="#" target="_blank"
-                  ><i class="im im-stackoverflow"></i
-                ></a>
-              </li>
+              {% endif %} {% if profile.social_twitter %}
               <li>
                 <a
                   title="Twitter"
                   href="{{ profile.social_twitter }}"
                   target="_blank"
-                  ><i class="im im-twitter"></i
+                  ><i class="ri-twitter-x-fill"></i
                 ></a>
               </li>
+              {% endif %} {% if profile.social_linkedin %}
               <li>
                 <a
                   title="LinkedIn"
                   href="{{ profile.social_linkedin }}"
                   target="_blank"
-                  ><i class="im im-linkedin"></i
+                  ><i class="ri-linkedin-fill"></i
                 ></a>
               </li>
+              {% endif %} {% if profile.social_website %}
               <li>
                 <a
                   title="Personal Website"
                   href="{{ profile.social_website }}"
                   target="_blank"
-                  ><i class="im im-globe"></i
+                  ><i class="ri-global-line"></i
                 ></a>
               </li>
+              {% endif %}
             </ul>
             {% if request.user.profile.id != profile.id %}
             <a

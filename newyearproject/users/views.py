@@ -82,6 +82,11 @@ def addSkill(request):
     profile = request.user.profile
     form = SkillForm()
 
+    # Check if the user already has 4 skills
+    if profile.skills_set.count() >= 4:
+        messages.warning(request, "You can only add up to 4 skills.")
+        return redirect("user-account")
+
     if request.method == "POST":
         form = SkillForm(request.POST)
         if form.is_valid():
@@ -122,6 +127,55 @@ def deleteSkill(request, pk):
         return redirect("user-account")
 
     context = {"page": "Delete Skill", "project": skill}
+    return render(request, "delete_template.html", context)
+
+
+@login_required(login_url="login-User")
+def addOtherSkill(request):
+    profile = request.user.profile
+    form = OtherSkillForm()
+
+    if request.method == "POST":
+        form = OtherSkillForm(request.POST)
+        if form.is_valid():
+            other_skill = form.save(commit=False)
+            other_skill.owner = profile
+            other_skill.save()
+            messages.success(request, "Other Skill added successfully!")
+            return redirect("user-account")
+
+    context = {"page": "Add Other Skill", "form": form}
+    return render(request, "other_skill_form.html", context)
+
+
+@login_required(login_url="login-User")
+def editOtherSkill(request, pk):
+    profile = request.user.profile
+    other_skill = profile.otherskill_set.get(id=pk)
+    form = OtherSkillForm(instance=other_skill)
+
+    if request.method == "POST":
+        form = OtherSkillForm(request.POST, instance=other_skill)
+        if form.is_valid():
+            form.save()
+            messages.info(request, "Other Skill updated successfully!")
+            return redirect("user-account")
+
+    context = {"page": "Edit Other Skill", "form": form}
+    return render(request, "other_skill_form.html", context)
+
+
+@login_required(login_url="login-User")
+def deleteOtherSkill(request, pk):
+    profile = request.user.profile
+    other_skill = profile.otherskill_set.get(id=pk)
+
+    if request.method == "POST":
+        other_skill.delete()
+        messages.success(request, "Other Skill deleted successfully!")
+        return redirect("user-account")
+
+    context = {"page": "Delete Other Skill", "object": other_skill}
     return render(request, "delete_template.html", context)
 
 

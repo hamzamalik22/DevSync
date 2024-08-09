@@ -1,64 +1,52 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static "images/d_logo.png" %}"
+    type="image/x-icon" />
 
-  <!-- Icon - IconMonster -->
-  <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
-  <!-- Mumble UI -->
-  <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
-  <!-- Dev Search UI -->
-  <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
-  <!-- Remix Icom -->
-  <link
-  href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-  rel="stylesheet"
-/>
-  <title>{{page}}</title>
-</head>
-<body>
-
-{% include "navbar.html" %}
-
-{% if messages %}
-
-    {% for message in messages %}
-    <div class="alert alert--{{message.tags}}" >
-      <p class="alert__message" >{{ message }}</p>
+    <!-- Icon - IconMonster -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css"
+    />
+    <!-- Mumble UI -->
+    <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
+    <!-- Dev Search UI -->
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
+    <!-- Remix Icom -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>{{page}}</title>
+  </head>
+  <body>
+    {% include "navbar.html" %} 
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert--{{message.tags}}">
+      <p class="alert__message">{{ message }}</p>
     </div>
-    {% endfor %}
-
-{% endif %}
-
-
-{% block content %}
-
-
-
-
-
-
-{% endblock content %}
-</body>
-<script src="{% static 'uikit/app.js'  %}"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-  $(document).ready(function() {
-    // Hide alerts after 1 second
-    $('.alert').each(function() {
-      var alertElement = $(this);
-      setTimeout(function() {
-        alertElement.fadeOut(500, function() {
-          alertElement.remove(); // Optionally remove the element from the DOM
-        });
-      }, 1000);
+    {% endfor %} {% endif %} {% block content %} {% endblock content %}
+  </body>
+  <script src="{% static 'uikit/app.js'  %}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Hide alerts after 1 second
+      $(".alert").each(function () {
+        var alertElement = $(this);
+        setTimeout(function () {
+          alertElement.fadeOut(900, function () {
+            alertElement.remove(); // Optionally remove the element from the DOM
+          });
+        }, 1000);
+      });
     });
-  });
-</script>
+  </script>
 </html>

@@ -19,7 +19,7 @@
 }
 
 .form__label,
-.form__field > label {
+.form__field>label {
   display: block;
   margin-bottom: 0.5rem;
   color: var(--color-text);
@@ -34,6 +34,26 @@
 .form__label--hidden {
   position: absolute;
   text-indent: -9999px;
+}
+
+
+select.input {
+  appearance: none;
+  /* Remove default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="%23bfbfbf" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 0.75rem center;
+  /* Custom dropdown arrow */
+  background-color: #1c1c1c;
+  padding-right: 2.5rem;
+  /* Space for the arrow */
+  min-width: 12rem;
+  width: 30%;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-light);
+  transition: all 0.3s ease-in-out;
+  background-color: var(--color-bg);
 }
 
 input.input[type='text'],
@@ -79,8 +99,8 @@ textarea.input:active {
   color: var(--color-text);
 }
 
-.form__field--radio input + label,
-.form__field--checkbox input + label {
+.form__field--radio input+label,
+.form__field--checkbox input+label {
   display: inline-block;
   margin-left: 1.5rem;
   margin-right: 2rem;
@@ -177,6 +197,6 @@ textarea.input:active {
   background: var(--color-main-light);
 }
 
-.form__field--action > *:not(:last-child) {
+.form__field--action>*:not(:last-child) {
   margin-right: 1rem;
 }

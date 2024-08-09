@@ -57,6 +57,19 @@ class SkillForm(ModelForm):
             field.widget.attrs.update({"class": "input"})
 
 
+class OtherSkillForm(ModelForm):
+    class Meta:
+        model = OtherSkill
+        fields = "__all__"
+        exclude = ["owner"]
+
+    def __init__(self, *args, **kwargs):
+        super(OtherSkillForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({"class": "input"})
+
+
 class MessageForm(ModelForm):
     class Meta:
         model = Message

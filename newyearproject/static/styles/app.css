@@ -469,7 +469,7 @@ img {
 .singleProject__title {
   font-size: 3.6rem;
   font-weight: 700;
-  color: var(--color-sub);
+  color: var(--color-white);
   margin-bottom: 3rem;
 }
 
@@ -487,7 +487,7 @@ img {
   text-transform: uppercase;
   font-size: 2.4rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-white-light);
   margin-bottom: 1rem;
 }
 
@@ -652,10 +652,12 @@ img {
   position: relative;
   z-index: 1;
   background: transparent;
-  height: 99vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .auth::after {
@@ -672,9 +674,10 @@ img {
 }
 
 .auth>.card {
-  padding: 3rem 4rem;
-  width: 95%;
-  max-width: 65rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 40rem;
+  box-sizing: border-box;
 }
 
 @media screen and (min-width: 650px) {
@@ -686,7 +689,7 @@ img {
 }
 
 .auth__header h3 {
-  color: var(--color-sub);
+  color: var(--color-white);
   font-weight: 700;
   margin-top: 1rem;
 }
@@ -705,7 +708,7 @@ img {
 .auth .auth__alternative p {
   font-size: 1.4rem;
   font-weight: 500;
-  color: var(--color-sub-light);
+  color: var(--color-white-light);
 }
 
 .auth .auth__actions {

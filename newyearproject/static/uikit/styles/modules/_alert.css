@@ -1,4 +1,7 @@
 .alert {
+  position: absolute;
+  right: 100px;
+  top: 100px;
   display: inline-flex;
   gap: 3rem;
   justify-content: space-between;
@@ -8,29 +11,30 @@
   border: 1px solid var(--color-white-light);
   margin-bottom: 1rem;
   margin-right: 1rem;
+  z-index: 20;
 }
 
 .alert,
-.alert > .alert__message {
+.alert>.alert__message {
   background-color: var(--color-main-light);
-  color: var(--color-main);
+  color: var(--color-white);
   font-size: 1.4rem;
   font-weight: var(--font-medium);
 }
 
 .alert.alert--error,
-.alert.alert--error > .alert__message {
+.alert.alert--error>.alert__message {
   background-color: var(--color-error-bg);
-  color: var(--color-error);
+  color: var(--color-white);
 }
 
 .alert.alert--success,
-.alert.alert--success > .alert__message {
+.alert.alert--success>.alert__message {
   background-color: var(--color-success-bg);
-  color: var(--color-success);
+  color: var(--color-white);
 }
 
-.alert > .alert__close {
+.alert>.alert__close {
   background: transparent;
   cursor: pointer;
   border: none;
@@ -39,6 +43,6 @@
   transition: var(--generic-transition);
 }
 
-.alert > .alert__close:hover {
+.alert>.alert__close:hover {
   opacity: 0.85;
 }

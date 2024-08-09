@@ -8,7 +8,7 @@
       <div class="message">
         <a class="backButton" href="{% url 'inbox' %}"><i class="ri-arrow-left-s-line"></i></a>
         <h2 class="message__subject">{{ messageRequests.subject }}</h4>
-          <a href="#" class="message__author">{{ messageRequests.name }}</a>
+          <a class="message__author">{{ messageRequests.name }}</a>
           <p class="message__date">{{ messageRequests.created }}</p>
           <div class="message__body">
             {{ messageRequests.body|linebreaksbr }}

@@ -20,7 +20,7 @@ def createProfile(sender, instance, created, **kwargs):
         message = (
             f"Hi {profile.name},\n\n"
             "Welcome to DEVSYNC!\n\n"
-            "We're excited to have you join our community of talented developers. "
+            "We're excited that you have join our community of talented developers. "
             "At DEVSYNC, you have the opportunity to showcase your skills, share your projects, and connect with other professionals in the industry.\n\n"
             "Here are some tips to get started:\n"
             "1. Complete your profile to let others know who you are and what you do.\n"
